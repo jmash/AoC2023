@@ -1,0 +1,174 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url('https://fonts.googleapis.com/css?family=Source+Code+Pro:100,200,300,400,500,600,700&display=swap');
+
+/* Screen flicker attribution: https://codepen.io/lbebber/pen/XJRdrV/ */
+
+
+@keyframes flicker {
+    0% {
+      opacity: 0.67912; }
+    5% {
+      opacity: 0.60552; }
+    10% {
+      opacity: 0.17483; }
+    15% {
+      opacity: 0.58951; }
+    20% {
+      opacity: 0.38211; }
+    25% {
+      opacity: 0.31951; }
+    30% {
+      opacity: 0.31656; }
+    35% {
+      opacity: 0.40496; }
+    40% {
+      opacity: 0.45366; }
+    45% {
+      opacity: 0.89012; }
+    50% {
+      opacity: 0.02054; }
+    55% {
+      opacity: 0.23272; }
+    60% {
+      opacity: 0.57679; }
+    65% {
+      opacity: 0.00417; }
+    70% {
+      opacity: 0.32032; }
+    75% {
+      opacity: 0.18613; }
+    80% {
+      opacity: 0.10604; }
+    85% {
+      opacity: 0.03708; }
+    90% {
+      opacity: 0.01368; }
+    95% {
+      opacity: 0.50289; }
+    100% {
+      opacity: 0.79935; } 
+}
+  
+.crt_screen {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  animation: flicker 0.15s infinite;
+}
+
+.crt_screen:before {
+  content:" ";
+  display:block;
+  position:absolute;
+  top:0;
+  left:0;
+  bottom:0;
+  right:0;
+  background:linear-gradient(transparentize(#121010,1) 50%, transparentize(darken(#121010,10),0.75) 50%), linear-gradient(90deg,transparentize(#ff0000,0.94),transparentize(#00ff00,0.98),transparentize(#0000ff,0.94));
+  z-index:2;
+  background-size:100% 2px, 3px 100%;
+  pointer-events:none;
+}
+
+.aoc_header:after {
+  content: '[ Advent of Code 2015 ]';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  filter: blur(4px);
+  display: inline-block;
+}
+
+.aoc_sub_header:after {
+  content: 'Server Side Style';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  filter: blur(12px);
+  display: inline-block;
+}
+
+.aoc_result_input::placeholder {
+  color: rgb(6 182 212);
+}
+
+.loading_flash_in {
+  animation-duration: 0.5s;
+  animation-name: loading_flash_in;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+
+@keyframes loading_flash_in {
+  from {
+    background-color: #111827;
+  }
+
+  to {
+    background-color: #111827;
+    filter: brightness(1.90);
+    /* background-color: #3a81a4; */
+  }
+}
+
+.loading_flash_out {
+  animation-duration: .5s;
+  animation-name: loading_flash_out;
+  animation-iteration-count: 1;
+}
+
+@keyframes loading_flash_out {
+  from {
+    background-color: #4489ac;
+  }
+
+  to {
+    background-color: #111827;
+  }
+}
+
+.indicator_flash {
+  animation-duration: 1s;
+  animation-name: indicator_flash_anim;
+  animation-iteration-count: 1;
+  animation-timing-function: ease-in-out;
+  transform-origin:center;
+}
+
+@keyframes indicator_flash_anim {
+  from {
+    width: 0px;
+    height: 0px;
+    opacity: 100%;
+  }
+  
+  to {
+    width: 300vh;
+    height: 300vh;
+    opacity: 0;
+  }
+}
+
+@keyframes power_button_loading_anim {
+  from {
+    transform: rotate(0);
+
+  }
+
+  to {
+    transform: rotate(6.28rad);
+  }
+}
+
+.power_button_loading {
+  animation: power_button_loading_anim 1s linear infinite;
+  /* animation-fill-mode: forwards; */
+}

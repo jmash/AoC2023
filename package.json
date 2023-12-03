@@ -1,0 +1,15 @@
+{
+  "name": "aoc2015_js",
+  "version": "0.0.1",
+  "description": "Advent of Code 2015 Server Side Style",
+  "main": "server/server.js",
+  "scripts": {
+    "start": "nodemon server/server.js",
+    "test": "npm run test"
+  },
+  "author": "Jared M Ashcraft",
+  "license": "MIT",
+  "dependencies": {
+    "debug": "^4.3.4"
+  }
+}

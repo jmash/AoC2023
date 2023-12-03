@@ -1,0 +1,316 @@
+<!doctype html>
+<html class="no-js" lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Advent of Code 2023 Server Side Style</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta property="og:title" content="">
+  <meta property="og:type" content="">
+  <meta property="og:url" content="">
+  <meta property="og:image" content="">
+
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="icon" type="image/png" href="../favicon-16x16.png">
+
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/output.css">
+
+  <script src="https://kit.fontawesome.com/93d32d557e.js" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="https://unpkg.com/xstate@4/dist/xstate.js"></script>
+
+  <script>
+    const PROTOCOL = "http://";
+    const BASE_URL = "localhost";
+    const PORT = "5000";
+    const FULL_URL = PROTOCOL + BASE_URL + ":" + PORT;
+    let dayResult = "";
+
+    // postMachine logic
+    const { createMachine, actions, interpret } = XState; 
+    
+    const postMachine = createMachine({
+      id: 'post',
+      initial: 'start',
+      context: {
+          retries: 0
+      },
+      states: {
+          start: {
+          on: {
+              POST: 'loading'
+          }
+          },
+          loading: {
+              on: {
+                  RESOLVE: 'success',
+                  REJECT: 'failure'
+              }
+              },
+              success: {
+              on: {
+                  END_ANIM: 'ready'
+              }
+              },
+              failure: {
+              on: {
+                  END_ANIM: 'ready'
+              }
+          },
+          ready: {
+              on: {
+                  POST: 'loading'
+              }
+          }
+      }
+    });
+
+    const postService = interpret(postMachine).onTransition((state) => {
+      console.log(state.value)
+      const bodyEl = document.getElementById("aoc_body");
+      const indicatorEl = document.getElementById("indicator");
+      const powerButtonEl = document.getElementById("power_button");
+
+      switch (state.value) {
+        case "ready":
+          bodyEl.classList.remove("bg-aoc_loading");
+          bodyEl.classList.remove("loading_flash_in");
+          bodyEl.classList.add("loading_flash_out");
+          powerButtonEl.classList.remove("power_button_loading");
+
+          // get the data from the endpoint and display it in the result panel
+          const resultForm = document.getElementById('aoc_result');
+          resultForm.setAttribute("value", dayResult);
+          indicatorEl.classList.remove("success_flash_in");
+          break;
+        case "loading": 
+          bodyEl.classList.add("bg-aoc_loading");
+          bodyEl.classList.add("loading_flash_in");
+          powerButtonEl.classList.add("power_button_loading");
+          break;
+        case "success":
+          indicatorEl.classList.add("bg-green-700");
+          indicatorEl.classList.add("indicator_flash");
+          break;
+        case "failure":
+          indicatorEl.classList.add("bg-red-700");
+          indicatorEl.classList.add("indicator_flash");
+      }
+      
+    });
+
+    postService.start();
+
+    // postMachine logic end -----------------------------------------------------------------
+
+    const setRadioSessionCookie = (radioValueSelected) => {
+      document.cookie = `radioCookie=${radioValueSelected + 1}; SameSite=Strict`;
+    }
+
+    const getCurrRadioValue = (radioName) => {
+      const currRadioNameCollection = document.getElementsByName(radioName);
+      let currRadioValue = "";
+
+      for (let i = 0; i < currRadioNameCollection.length; i++) {
+        if (currRadioNameCollection[i].checked) {
+          currRadioValue = currRadioNameCollection[i].value;
+        }
+      }
+
+      return currRadioValue;
+    }
+
+    const createDaySelectorForm = () => {
+
+      console.log('firing create day selector form');
+      let aocDayMax = 25;
+      let aocDayCount = 25;
+      const daySelectorRowCount = 3;
+      const daySelectorColCount = 10;
+      const daySelectorForm = document.getElementById('day_selector_form');
+      const daySelectorTable = document.createElement('table');
+
+      for (let j = 1; j <= daySelectorRowCount; j++) {
+        let currTableRow = document.createElement('tr');
+
+        for (let i = 1; i <= daySelectorColCount; i++) {
+          
+          let currTableDataLabel = document.createElement('td');
+          let currTableDataRadio = document.createElement('td');
+          let currDayRadio = document.createElement('input');
+          let aocDayCurr = (aocDayMax - aocDayCount) + 1;
+
+          currDayRadio.setAttribute("type", "radio");
+          currDayRadio.setAttribute("name", "day_selector_radio");
+          currDayRadio.setAttribute("onclick", "setRadioSessionCookie()");
+          currDayRadio.setAttribute("id", `aoc_day${aocDayCurr}`);
+          currDayRadio.setAttribute("value", `Day ${aocDayCurr}`);
+          if (aocDayCurr === 1) {
+            currDayRadio.setAttribute("checked", "");
+          }
+          
+          let currDayLabel = document.createElement('label');
+          
+          let currDayLink = document.createElement('a');
+          currDayLink.setAttribute("href", `https://adventofcode.com/2023/day/${aocDayCurr}`);
+          currDayLink.setAttribute("target", "_blank");
+          currDayLink.innerHTML = `Day ${aocDayCurr}`;
+          currDayLabel.appendChild(currDayLink);
+          currDayLabel.classList.add("pl-2", "ml-2");
+          
+          currTableDataLabel.appendChild(currDayLabel);
+          currTableDataRadio.appendChild(currDayRadio);
+          currTableDataRadio.classList.add("pl-1");
+          currTableRow.appendChild(currTableDataLabel);
+          currTableRow.appendChild(currTableDataRadio);
+
+          aocDayCount--;
+          if (aocDayCurr >= aocDayMax) break;
+        }
+        daySelectorForm.appendChild(currTableRow);
+      }
+
+      const currRadioNameCollection = document.getElementsByName("day_selector_radio");
+
+      for (let i = 0; i < currRadioNameCollection.length; i++) {
+        currRadioNameCollection[i].setAttribute("onclick", `setRadioSessionCookie(${i})`);
+      }
+    }
+
+    const startSolutionCheck = async () => {
+      postService.send({ type: 'POST'});
+
+      // get the input from the solution input form
+      const solutionInput = document.getElementById('aoc_input').value;
+      const daySelectionValue = getCurrRadioValue("day_selector_radio");
+      const daySelectionNumber = daySelectionValue.match(/\d+/g);
+
+      const partSelectionValue = getCurrRadioValue("part_picker_radio");
+      const partSelectionMatches = partSelectionValue.match(/\d+/g);
+      const partSelectionNumber = partSelectionMatches[0];
+
+      const encodedSolutionInput = encodeURI(solutionInput);
+ 
+      // take the solution input and POST it to the server
+      const {data} = await axios.post(`${FULL_URL}/aoc_day${daySelectionNumber}`, { 
+        solutionInput: encodedSolutionInput,
+        part: partSelectionNumber
+      }).catch(err => {
+        console.error(err);
+        postService.send({ type: 'REJECT' });
+      });
+
+      dayResult = data.solutionResult;
+
+      if (data.solutionResult !== undefined) {
+        postService.send({ type: 'RESOLVE' });
+      }
+    };
+
+    const setCurrDaySelectorRadioToCookieValue = () => {
+      const currDayRadioNameCollection = document.getElementsByName("day_selector_radio");
+
+      // this will separate the cookie by using the semicolon as the delimiter, and then
+      // the first element will be selected; this will be split at the equals sign, and the value
+      // to the right of the equals sign will be the value for the currently selected day.
+      const currDayRadioSelectionCookieNumber = document.cookie.split(';')[0].split("=")[1];
+      
+      for (let i = 0; i < currDayRadioNameCollection.length; i++) {
+        const daySelectionNumber = currDayRadioNameCollection[i].value.match(/\d+/g)[0];
+
+        if (daySelectionNumber === currDayRadioSelectionCookieNumber) {
+          currDayRadioNameCollection[i].setAttribute("checked", "");
+        }
+      }
+    }
+
+    const animationChangeListener = (event) => {
+      switch (event.type) {
+        case "animationend":
+          console.log("sending END_ANIM");
+          postService.send({ type: "END_ANIM" });
+          break;
+        default:
+          break;
+      }
+    }
+
+    window.addEventListener('load', function(event) {
+      
+      const indicatorEl = document.getElementById("indicator");
+      indicatorEl.addEventListener("animationend", animationChangeListener, false);
+
+      createDaySelectorForm();
+
+      setCurrDaySelectorRadioToCookieValue();
+      
+    });
+  </script>
+
+  <meta name="theme-color" content="#fafafa">
+</head>
+
+<body id="aoc_body" class="bg-gray-900 text-cyan-500">
+  <!-- <div class="flex pointer-events-none justify-center items-center h-screen absolute">
+  </div> -->
+  
+  <div class="flex items-center justify-center relative">
+    
+    <div class="container">
+      
+      <div id="day_selector_container" class="flex">
+        <form id="day_selector_form" class="mx-auto">
+          <!-- populated on page load -->
+        </form>
+      </div>
+      <div class="flex items-center justify-center flex-col pt-16">
+        <div>
+          <h1 style="font-family:'Source Code Pro'" class="text-aoc_green text-4xl relative aoc_header">[ Advent of Code 2023 ]</h1>
+        </div>
+        <h2 class="uppercase text-aoc_green mb-9 tracking-widest text-2xl relative aoc_sub_header">Server Side Style</h2>
+          
+        <div class="flex flex-col">
+          
+          <div class="flex flex-col relative ">
+            
+            <div class="">
+              <label for="aoc_input" class="text-xs border font-semibold py-1 px-2 rounded-t-md bg-transparent uppercase border-cyan-500 text-cyan-500">Input</label>
+            </div>
+            
+            <div class="relative">
+              <div class="flex items-center justify-center absolute inset-x-1/2 inset-y-1/2">
+                <div id="indicator" class="w-0 h-0 z-[-1000] bg-green-700 rounded-full overflow-hidden fixed"></div>
+              </div>
+              <textarea class="p-2 border-t-2 border-l-2 border-r-2 border-cyan-500 text-cyan-500 bg-aoc_input" id="aoc_input" name="aoc_input" rows="10" cols="50"></textarea>
+            </div>
+            <div class="flex flex-row justify-between bg-aoc_input border-l-2 border-r-2 border-cyan-500">
+              
+              <div class="pl-2 py-1">
+                <button id="power_button" onclick="startSolutionCheck()" class="z-30">
+                  <i class="scale-150 fa-solid fa-power-off text-cyan-500"></i>
+                </button>
+              </div>
+              <div class="mt-1">
+                <label>Part 1</label>
+                <input class="mr-2" type="radio" value="Part 1" name="part_picker_radio" checked/>
+                <label>Part 2</label>
+                <input class="mr-2" type="radio" value="Part 2" name="part_picker_radio"/>
+              </div>
+            </div>
+          </div>
+          <div class="flex flex-col">
+            <label class="text-xs border font-semibold py-1 px-2 bg-transparent uppercase border-cyan-500 text-cyan-500">Result</label>
+            <input class="aoc_result_input transparent pl-2 pr-2 rounded-b-md border-2 border-b-2 border-cyan-500 bg-aoc_input text-cyan-500 font-extrabold" type="text" id="aoc_result" name="aoc_result" disabled />
+          </div>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+</body>
+
+</html>
