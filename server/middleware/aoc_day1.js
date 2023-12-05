@@ -1,5 +1,3 @@
-const { number } = require("mathjs");
-
 const aoc_day1 = (request, response, next) => {
     const solutionInput = decodeURI(request.body.solutionInput);
     //console.log(`solutionInput: ${JSON.stringify(solutionInput)}`);
