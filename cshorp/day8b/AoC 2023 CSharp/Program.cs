@@ -53,29 +53,72 @@ internal static class Program
         }
 
         _dataLines = dataLines.ToArray();
+
         
-        while (!allEndWithZ(currentHeaders))
+
+        for (int j = 0; j < currentHeaders.Count; j++)
         {
 
-            for (var i = 0; i < commandsArray.Length; i++)
-            {
-                answerTotal += 1;
-                
-                Logger.Debug("About to apply command: {CommandsArray}", commandsArray[i]);
+            answerTotal = 0;
 
-                for (int j = 0; j < currentHeaders.Count; j++)
-                {
-
-                    var commandInt = commandsArray[i];
-                    currentHeaders[j] = FindNextHeader(currentHeaders[j], commandInt);
-
-                }
-                
-            }
+            var slowHeader = currentHeaders[j];
+            var fastHeader = currentHeaders[j];
             
+            var slowI = 0;
+            var fastI = 0;
+
+            var slowITotal = 0;
+            var fastITotal = 0;
+
+            Logger.Information("Slow Header: {SlowHeader}, Fast Header: {FastHeader}", slowHeader, fastHeader);
+            
+            do
+            {
+                
+                answerTotal += 1;
+
+                // Logger.Debug("About to apply command: {Command} Original header is: Current header is: {CurrentHeader}", commandsArray[i], currentHeaders[j]);
+
+                Logger.Debug("Slow header is: {SlowHeader} Fast Header is: {FastHeader}", slowHeader, fastHeader);
+                
+                var slowCommandInt = commandsArray[slowI];
+                var fastCommandInt = commandsArray[fastI];
+                
+                slowHeader = FindNextHeader(slowHeader, slowCommandInt);
+                
+                Logger.Debug("Slow header is: {SlowHeader} Fast Header is: {FastHeader}", slowHeader, fastHeader);
+                
+                fastHeader = FindNextHeader(fastHeader, fastCommandInt);
+
+                slowI += 1;
+                slowITotal += 1;
+                
+                if (slowI > commandsArray.Length - 1) slowI = 0;
+                
+                fastI += 1;
+                fastITotal += 1;
+                
+                if (fastI > commandsArray.Length - 1) fastI = 0;
+
+                Logger.Debug("Fast header: {FastHeader} has done its first step, fast i is now: {FastI}", fastHeader, fastI);
+
+                fastCommandInt = commandsArray[fastI];
+                
+                fastHeader = FindNextHeader(fastHeader, fastCommandInt);
+
+                fastI += 1;
+                fastITotal += 1;
+
+                if (fastI > commandsArray.Length - 1) fastI = 0;
+                
+                Logger.Debug("Fast header: {FastHeader} has done its second step, fast i is now: {FastI}", fastHeader, fastI);
+
+            } while (slowI != fastI);
+
+            Logger.Information("Slow i: {SlowI}, Fast I: {FastI}", slowITotal, fastITotal);
+
         }
 
-        Logger.Information("Answer: {AnswerTotal}", answerTotal);
     }
 
     private static bool allEndWithZ(List<string> currentHeaders)
