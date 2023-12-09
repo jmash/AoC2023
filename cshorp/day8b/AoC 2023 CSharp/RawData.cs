@@ -3,13 +3,25 @@
 public static class RawData
 {
     public static string SampleData01 => """
+                                         LR
+
+                                         11A = (11B, XXX)
+                                         11B = (XXX, 11Z)
+                                         11Z = (11B, XXX)
+                                         22A = (22B, XXX)
+                                         22B = (22C, 22C)
+                                         22C = (22Z, 22Z)
+                                         22Z = (22B, 22B)
+                                         XXX = (XXX, XXX)
+                                         """;
+    public static string SampleData02 => """
                                          LLR
                                          
                                          AAA = (BBB, BBB)
                                          BBB = (AAA, ZZZ)
                                          ZZZ = (ZZZ, ZZZ)
                                          """;
-    public static string SampleData02 => """
+    public static string SampleData03 => """
                                          RL
                                          
                                          AAA = (BBB, CCC)
@@ -20,7 +32,7 @@ public static class RawData
                                          GGG = (GGG, GGG)
                                          ZZZ = (ZZZ, ZZZ)
                                          """;
-
+    
     public static string ActualData01 => """
                                          LLLRRRLLRLRLLRRRLRLRRLRRLRRRLRRLLLRLRRLLRLRRRLRRRLLLRLLLLRLRRLLLRRRLRRRLRLRRRLLLLRLRLLRRLLRRRLRRLRLRRRLRRRLLLRLRRRLRRRLRRLLRRLRRRLLRLRLRLRLRLRRRLRLRRLRLRLRLRRLRRLRLRLRRLLRRLRRRLRRLRRLRRRLRRLRLLRLRLLRRLRRRLRLRLRRLLRRLRRRLRRLRRRLRLRRRLRRLRLRRLRLRRLLLRRLRRLRRRLRLRRLRRRLRLRLRRLRLLRRRR
                                          

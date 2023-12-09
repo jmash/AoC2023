@@ -11,9 +11,7 @@ internal static class Program
             .MinimumLevel.Information()
             .CreateLogger();
 
-    private static List<DataLine> _dataLines;
-
-    // private static DataLine[] _dataLinesArray;
+    private static DataLine[] _dataLines;
 
     public static void Main()
     {
@@ -36,40 +34,81 @@ internal static class Program
 
         var commandsArray = translatedCommandLine.ToArray();
         
-        _dataLines = new List<DataLine>();
+        var dataLines = new List<DataLine>();
+        
+        var currentHeaders = new List<string>();
         
         for (var i = 2; i < rawLines.Length; i++)
         {
+            
             var line = rawLines[i];
-            _dataLines.Add(new DataLine(line, Logger));
 
+            var currentDataLine = new DataLine(line, Logger);
+            
+            dataLines.Add(currentDataLine);
+
+            if (currentDataLine.Header.EndsWith("A"))
+                currentHeaders.Add(currentDataLine.Header);
+                
         }
 
-        var currentHeader = "AAA";
-
-        while (currentHeader != "ZZZ")
+        _dataLines = dataLines.ToArray();
+        
+        while (!allEndWithZ(currentHeaders))
         {
-            
+
             for (var i = 0; i < commandsArray.Length; i++)
             {
                 answerTotal += 1;
+                
+                Logger.Debug("About to apply command: {CommandsArray}", commandsArray[i]);
 
-                var commandInt = commandsArray[i];
-                currentHeader = FindNextHeader(currentHeader, commandInt);
+                for (int j = 0; j < currentHeaders.Count; j++)
+                {
 
+                    var commandInt = commandsArray[i];
+                    currentHeaders[j] = FindNextHeader(currentHeaders[j], commandInt);
+
+                }
+                
             }
+            
         }
 
         Logger.Information("Answer: {AnswerTotal}", answerTotal);
     }
 
+    private static bool allEndWithZ(List<string> currentHeaders)
+    {
+
+        var allEndWithZ = true;
+        
+        foreach (var header in currentHeaders)
+        {
+            if (!header.EndsWith("Z"))
+                allEndWithZ = false;
+        }
+
+        return allEndWithZ;
+    }
+
     private static string FindNextHeader(string currentHeader, int commandInt)
     {
-        
-        var matchingDataLine = _dataLines.FirstOrDefault(x => x.Header == currentHeader);
-        Logger.Debug("Current Header: {CurrentHeader}, Matching Data Line: {@MatchingDataLine}", currentHeader, matchingDataLine!);
+        for (int i = 0; i < _dataLines.Length; i++)
+        {
+            var queryLine = _dataLines[i];
 
-        return matchingDataLine.Values[commandInt];
+            for (var j = 0; j < queryLine.Header.Length; j++)
+            {
+                if (currentHeader[j] != queryLine.Header[j]) break;
+                if (j == 2)
+                {
+                    Logger.Debug("Current Header: {CurrentHeader} Matching header found at line: {I}", currentHeader, i);
+                    return queryLine.Values[commandInt];
+                }
+            }
+        }
 
+        throw new Exception("YA DUN FUCKED UP: could not find matching header");
     }
 }
