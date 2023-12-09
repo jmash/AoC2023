@@ -1,0 +1,20 @@
+C:\Users\jurrd\source\repos\AoC2023\cshorp\day8a\AoC 2023 CSharp\bin\Debug\net7.0\AoC 2023 CSharp.exe
+C:\Users\jurrd\source\repos\AoC2023\cshorp\day8a\AoC 2023 CSharp\bin\Debug\net7.0\AoC 2023 CSharp.deps.json
+C:\Users\jurrd\source\repos\AoC2023\cshorp\day8a\AoC 2023 CSharp\bin\Debug\net7.0\AoC 2023 CSharp.runtimeconfig.json
+C:\Users\jurrd\source\repos\AoC2023\cshorp\day8a\AoC 2023 CSharp\bin\Debug\net7.0\AoC 2023 CSharp.dll
+C:\Users\jurrd\source\repos\AoC2023\cshorp\day8a\AoC 2023 CSharp\bin\Debug\net7.0\AoC 2023 CSharp.pdb
+C:\Users\jurrd\source\repos\AoC2023\cshorp\day8a\AoC 2023 CSharp\bin\Debug\net7.0\Serilog.dll
+C:\Users\jurrd\source\repos\AoC2023\cshorp\day8a\AoC 2023 CSharp\bin\Debug\net7.0\Serilog.Sinks.Console.dll
+C:\Users\jurrd\source\repos\AoC2023\cshorp\day8a\AoC 2023 CSharp\bin\Debug\net7.0\Serilog.Sinks.Debug.dll
+C:\Users\jurrd\source\repos\AoC2023\cshorp\day8a\AoC 2023 CSharp\bin\Debug\net7.0\Serilog.Sinks.File.dll
+C:\Users\jurrd\source\repos\AoC2023\cshorp\day8a\AoC 2023 CSharp\obj\Debug\net7.0\AoC 2023 CSharp.csproj.AssemblyReference.cache
+C:\Users\jurrd\source\repos\AoC2023\cshorp\day8a\AoC 2023 CSharp\obj\Debug\net7.0\AoC 2023 CSharp.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\jurrd\source\repos\AoC2023\cshorp\day8a\AoC 2023 CSharp\obj\Debug\net7.0\AoC 2023 CSharp.AssemblyInfoInputs.cache
+C:\Users\jurrd\source\repos\AoC2023\cshorp\day8a\AoC 2023 CSharp\obj\Debug\net7.0\AoC 2023 CSharp.AssemblyInfo.cs
+C:\Users\jurrd\source\repos\AoC2023\cshorp\day8a\AoC 2023 CSharp\obj\Debug\net7.0\AoC 2023 CSharp.csproj.CoreCompileInputs.cache
+C:\Users\jurrd\source\repos\AoC2023\cshorp\day8a\AoC 2023 CSharp\obj\Debug\net7.0\AoC 2023 CSharp.csproj.CopyComplete
+C:\Users\jurrd\source\repos\AoC2023\cshorp\day8a\AoC 2023 CSharp\obj\Debug\net7.0\AoC 2023 CSharp.dll
+C:\Users\jurrd\source\repos\AoC2023\cshorp\day8a\AoC 2023 CSharp\obj\Debug\net7.0\refint\AoC 2023 CSharp.dll
+C:\Users\jurrd\source\repos\AoC2023\cshorp\day8a\AoC 2023 CSharp\obj\Debug\net7.0\AoC 2023 CSharp.pdb
+C:\Users\jurrd\source\repos\AoC2023\cshorp\day8a\AoC 2023 CSharp\obj\Debug\net7.0\AoC 2023 CSharp.genruntimeconfig.cache
+C:\Users\jurrd\source\repos\AoC2023\cshorp\day8a\AoC 2023 CSharp\obj\Debug\net7.0\ref\AoC 2023 CSharp.dll
