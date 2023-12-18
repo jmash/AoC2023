@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "dgSpecHash": "bnOjbF+YIAcX0E87tXG5J54aD2SYHb5EYoGWpVkkkoV1EWS+twYTv4P8vz1ApPR90DiBJ6IdE1VRmfe1Bj4s6A==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\jurrd\\source\\repos\\AoC2023\\cshorp\\day8b\\AoC 2023 CSharp\\AoC 2023 CSharp.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\jurrd\\.nuget\\packages\\serilog\\3.1.1\\serilog.3.1.1.nupkg.sha512",
+    "C:\\Users\\jurrd\\.nuget\\packages\\serilog.sinks.console\\5.0.1\\serilog.sinks.console.5.0.1.nupkg.sha512",
+    "C:\\Users\\jurrd\\.nuget\\packages\\serilog.sinks.debug\\2.0.0\\serilog.sinks.debug.2.0.0.nupkg.sha512",
+    "C:\\Users\\jurrd\\.nuget\\packages\\serilog.sinks.file\\5.0.0\\serilog.sinks.file.5.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}
