@@ -102,7 +102,7 @@ const aoc_day2 = (request, response, next) => {
                 let greenMax = colorCountMap["green"][colorCountMap["green"].length - 1];
                 let blueMax = colorCountMap["blue"][colorCountMap["blue"].length - 1];
 
-                console.log(`Total: ${redMax} * ${greenMax} * ${blueMax} = ${redMax * greenMax * blueMax}`);
+                //console.log(`Total: ${redMax} * ${greenMax} * ${blueMax} = ${redMax * greenMax * blueMax}`);
 
                 solutionResult += Number(redMax * greenMax * blueMax);
 
