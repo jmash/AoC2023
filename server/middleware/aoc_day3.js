@@ -7,9 +7,18 @@ const aoc_day3 = (request, response, next) => {
         response.status(500).send({ error: `No query received.` });
     } else {
         if (part === '1') {
-            let inputs = solutionInput.split('\n');
+            const inputs = solutionInput.split('\n');
 
-            
+            const puzzleInputRowsBordered = addBorderToPuzzle(inputs);
+
+            let numberIdentityMap = generateNumberIdentityMap(puzzleInputRowsBordered);
+
+            let symbolPositionsMap = generateSymbolPositionsMap(puzzleInputRowsBordered);
+
+            //checkForNumberAroundSymbol(2, 3);
+
+            console.log("crashes here?");
+            console.log(symbolPositionsMap);
 
             response.status(200).send({ solutionResult: solutionResult });
         }
@@ -25,6 +34,83 @@ const aoc_day3 = (request, response, next) => {
         }
     }
 };
+
+function checkForNumberAroundSymbol(rowInx, colInx) {
+    for (let i = -1; i <= 1; i++) {
+        for (let j = -1; j <= 1; j++) {
+            console.log(`[${i}][${j}]`);
+        }
+    }
+}
+
+function generateSymbolPositionsMap(puzzle) {
+
+    console.log("entering symbol positions map");
+
+    let symbolPositionsMap = {};
+
+    symbolPositionsMap["#"].rowInx = 4;
+
+    console.log(symbolPositionsMap);
+
+    const symbolExtractRegex = /([^.^\d^\n])/g;
+
+    for (const row in puzzle) {
+        const symbolMatches = puzzle[row].matchAll(symbolExtractRegex);
+
+        for (const match of symbolMatches) {
+            console.log("about to try to assign values");
+            symbolPositionsMap[match].rowInx = row;
+            symbolPositionsMap[match].colInx = match.index;
+        }
+    }
+
+    return symbolPositionsMap;
+
+}
+
+function generateNumberIdentityMap(puzzle) {
+
+    let numberIdentityMap = {};
+
+    const numberExtractRegex = /(\d)+/g;
+
+    for (const row of puzzle) {
+        const numberMatches = row.matchAll(numberExtractRegex);
+
+        for (const match of numberMatches) {
+            numberIdentityMap[match[0]] = 0;
+        }
+    }
+
+    return numberIdentityMap;
+
+}
+
+function addBorderToPuzzle(puzzleInputRows) {
+
+    let topBorderArray = [];
+
+    let puzzleInputRowsBordered = [];
+
+    for (let i = 0; i < puzzleInputRows.length + 2; i++) {
+        topBorderArray.push('.');
+    }
+
+    const topBorder = topBorderArray.join('');
+
+    puzzleInputRowsBordered.push(topBorder);
+
+    for (let row in puzzleInputRows) {
+        let borderedRow = "." + puzzleInputRows[row] + ".";
+        puzzleInputRowsBordered.push(borderedRow);
+    }
+
+    puzzleInputRowsBordered.push(topBorder);
+
+    return puzzleInputRowsBordered;
+
+}
 
 exports.aoc_day3 = aoc_day3;
 
