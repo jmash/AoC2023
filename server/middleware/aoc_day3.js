@@ -15,10 +15,9 @@ const aoc_day3 = (request, response, next) => {
 
             let symbolPositionsMap = generateSymbolPositionsMap(puzzleInputRowsBordered);
 
-            //checkForNumberAroundSymbol(2, 3);
+            let numberPositionsMap = generateNumberPositionsMap(puzzleInputRowsBordered);
 
-            console.log("crashes here?");
-            console.log(symbolPositionsMap);
+            console.log(numberPositionsMap);
 
             response.status(200).send({ solutionResult: solutionResult });
         }
@@ -36,6 +35,9 @@ const aoc_day3 = (request, response, next) => {
 };
 
 function checkForNumberAroundSymbol(rowInx, colInx) {
+
+
+
     for (let i = -1; i <= 1; i++) {
         for (let j = -1; j <= 1; j++) {
             console.log(`[${i}][${j}]`);
@@ -43,26 +45,49 @@ function checkForNumberAroundSymbol(rowInx, colInx) {
     }
 }
 
+function generateNumberPositionsMap(puzzle) {
+
+    let numberPositionsMap = {};
+
+    const numberExtractRegex = /(\d)+/g;
+
+    for (const row in puzzle) {
+        
+        const numberMatches = puzzle[row].matchAll(numberExtractRegex);
+
+        for (const match of numberMatches) {
+            numberPositionsMap[match[0]] = [];
+
+            for (let i = 0; i < match[0].length; i++) {
+                numberPositionsMap[match[0]].push(match.index+i);
+            }
+        }
+    }
+
+    return numberPositionsMap;
+}
+
 function generateSymbolPositionsMap(puzzle) {
 
-    console.log("entering symbol positions map");
-
     let symbolPositionsMap = {};
-
-    symbolPositionsMap["#"].rowInx = 4;
-
-    console.log(symbolPositionsMap);
 
     const symbolExtractRegex = /([^.^\d^\n])/g;
 
     for (const row in puzzle) {
+
         const symbolMatches = puzzle[row].matchAll(symbolExtractRegex);
 
         for (const match of symbolMatches) {
-            console.log("about to try to assign values");
-            symbolPositionsMap[match].rowInx = row;
-            symbolPositionsMap[match].colInx = match.index;
+
+            symbolPositionsMap[`${match[0]}_${row}_${match.index}`] = {
+                rowInx: 0,
+                colInx: 0
+            }
+
+            symbolPositionsMap[`${match[0]}_${row}_${match.index}`].rowInx = row;
+            symbolPositionsMap[`${match[0]}_${row}_${match.index}`].colInx = match.index;
         }
+
     }
 
     return symbolPositionsMap;
