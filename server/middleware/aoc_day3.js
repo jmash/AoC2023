@@ -15,6 +15,8 @@ const aoc_day3 = (request, response, next) => {
 
             let symbolPositionsMap = generateSymbolPositionsMap(puzzleInputRowsBordered);
 
+            console.log(symbolPositionsMap);
+
             let numberPositionsMap = generateNumberPositionsMap(puzzleInputRowsBordered);
 
             console.log(numberPositionsMap);
@@ -36,8 +38,6 @@ const aoc_day3 = (request, response, next) => {
 
 function checkForNumberAroundSymbol(rowInx, colInx) {
 
-
-
     for (let i = -1; i <= 1; i++) {
         for (let j = -1; j <= 1; j++) {
             console.log(`[${i}][${j}]`);
@@ -51,18 +51,27 @@ function generateNumberPositionsMap(puzzle) {
 
     const numberExtractRegex = /(\d)+/g;
 
+    let rowIx = 0;
+
     for (const row in puzzle) {
-        
+
         const numberMatches = puzzle[row].matchAll(numberExtractRegex);
+        numberPositionsMap[rowIx] = {};
 
         for (const match of numberMatches) {
-            numberPositionsMap[match[0]] = [];
+
+            numberPositionsMap[rowIx][match[0]] = [];
 
             for (let i = 0; i < match[0].length; i++) {
-                numberPositionsMap[match[0]].push(match.index+i);
+                numberPositionsMap[rowIx][match[0]].push(match.index + i );
             }
+
         }
+
+        rowIx += 1;
     }
+
+    console.log(numberPositionsMap);
 
     return numberPositionsMap;
 }
