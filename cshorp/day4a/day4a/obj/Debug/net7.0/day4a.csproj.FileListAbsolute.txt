@@ -1,0 +1,14 @@
+C:\Users\jurrd\source\repos\AoC2023\cshorp\day4a\day4a\bin\Debug\net7.0\day4a.exe
+C:\Users\jurrd\source\repos\AoC2023\cshorp\day4a\day4a\bin\Debug\net7.0\day4a.deps.json
+C:\Users\jurrd\source\repos\AoC2023\cshorp\day4a\day4a\bin\Debug\net7.0\day4a.runtimeconfig.json
+C:\Users\jurrd\source\repos\AoC2023\cshorp\day4a\day4a\bin\Debug\net7.0\day4a.dll
+C:\Users\jurrd\source\repos\AoC2023\cshorp\day4a\day4a\bin\Debug\net7.0\day4a.pdb
+C:\Users\jurrd\source\repos\AoC2023\cshorp\day4a\day4a\obj\Debug\net7.0\day4a.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\jurrd\source\repos\AoC2023\cshorp\day4a\day4a\obj\Debug\net7.0\day4a.AssemblyInfoInputs.cache
+C:\Users\jurrd\source\repos\AoC2023\cshorp\day4a\day4a\obj\Debug\net7.0\day4a.AssemblyInfo.cs
+C:\Users\jurrd\source\repos\AoC2023\cshorp\day4a\day4a\obj\Debug\net7.0\day4a.csproj.CoreCompileInputs.cache
+C:\Users\jurrd\source\repos\AoC2023\cshorp\day4a\day4a\obj\Debug\net7.0\day4a.dll
+C:\Users\jurrd\source\repos\AoC2023\cshorp\day4a\day4a\obj\Debug\net7.0\refint\day4a.dll
+C:\Users\jurrd\source\repos\AoC2023\cshorp\day4a\day4a\obj\Debug\net7.0\day4a.pdb
+C:\Users\jurrd\source\repos\AoC2023\cshorp\day4a\day4a\obj\Debug\net7.0\day4a.genruntimeconfig.cache
+C:\Users\jurrd\source\repos\AoC2023\cshorp\day4a\day4a\obj\Debug\net7.0\ref\day4a.dll

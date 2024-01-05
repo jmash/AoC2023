@@ -1,0 +1,89 @@
+2023-12-08 22:08:14.726 -05:00 [INF] Starting!
+2023-12-08 22:08:14.877 -05:00 [DBG] rawline: RL header: RL
+2023-12-08 22:09:26.684 -05:00 [INF] Starting!
+2023-12-08 22:09:26.774 -05:00 [DBG] rawline: AAA = (BBB, CCC) header: AAA
+2023-12-08 22:09:26.781 -05:00 [DBG] rawline: BBB = (DDD, EEE) header: BBB
+2023-12-08 22:09:26.782 -05:00 [DBG] rawline: CCC = (ZZZ, GGG) header: CCC
+2023-12-08 22:09:26.784 -05:00 [DBG] rawline: DDD = (DDD, DDD) header: DDD
+2023-12-08 22:09:26.786 -05:00 [DBG] rawline: EEE = (EEE, EEE) header: EEE
+2023-12-08 22:09:26.788 -05:00 [DBG] rawline: GGG = (GGG, GGG) header: GGG
+2023-12-08 22:09:26.790 -05:00 [DBG] rawline: ZZZ = (ZZZ, ZZZ) header: ZZZ
+2023-12-08 22:09:26.792 -05:00 [INF] Answer: 0
+2023-12-08 22:17:14.876 -05:00 [INF] Starting!
+2023-12-08 22:17:14.949 -05:00 [DBG] leftValue:  BBB
+2023-12-08 22:17:14.958 -05:00 [DBG] rawline: AAA = (BBB, CCC) header: AAA
+2023-12-08 22:17:14.962 -05:00 [DBG] leftValue:  DDD
+2023-12-08 22:17:14.963 -05:00 [DBG] rawline: BBB = (DDD, EEE) header: BBB
+2023-12-08 22:17:14.966 -05:00 [DBG] leftValue:  ZZZ
+2023-12-08 22:17:14.968 -05:00 [DBG] rawline: CCC = (ZZZ, GGG) header: CCC
+2023-12-08 22:17:14.972 -05:00 [DBG] leftValue:  DDD
+2023-12-08 22:17:14.973 -05:00 [DBG] rawline: DDD = (DDD, DDD) header: DDD
+2023-12-08 22:17:14.974 -05:00 [DBG] leftValue:  EEE
+2023-12-08 22:17:14.976 -05:00 [DBG] rawline: EEE = (EEE, EEE) header: EEE
+2023-12-08 22:17:14.977 -05:00 [DBG] leftValue:  GGG
+2023-12-08 22:17:14.985 -05:00 [DBG] rawline: GGG = (GGG, GGG) header: GGG
+2023-12-08 22:17:14.989 -05:00 [DBG] leftValue:  ZZZ
+2023-12-08 22:17:14.993 -05:00 [DBG] rawline: ZZZ = (ZZZ, ZZZ) header: ZZZ
+2023-12-08 22:17:14.996 -05:00 [INF] Answer: 0
+2023-12-08 22:19:15.562 -05:00 [INF] Starting!
+2023-12-08 22:19:15.635 -05:00 [DBG] leftValue:  BBB
+2023-12-08 22:19:15.642 -05:00 [DBG] rawline: AAA = (BBB, CCC) header: AAA
+2023-12-08 22:19:15.646 -05:00 [DBG] leftValue:  DDD
+2023-12-08 22:19:15.648 -05:00 [DBG] rawline: BBB = (DDD, EEE) header: BBB
+2023-12-08 22:19:15.649 -05:00 [DBG] leftValue:  ZZZ
+2023-12-08 22:19:15.650 -05:00 [DBG] rawline: CCC = (ZZZ, GGG) header: CCC
+2023-12-08 22:19:15.651 -05:00 [DBG] leftValue:  DDD
+2023-12-08 22:19:15.653 -05:00 [DBG] rawline: DDD = (DDD, DDD) header: DDD
+2023-12-08 22:19:15.655 -05:00 [DBG] leftValue:  EEE
+2023-12-08 22:19:15.656 -05:00 [DBG] rawline: EEE = (EEE, EEE) header: EEE
+2023-12-08 22:19:15.661 -05:00 [DBG] leftValue:  GGG
+2023-12-08 22:19:15.663 -05:00 [DBG] rawline: GGG = (GGG, GGG) header: GGG
+2023-12-08 22:19:15.665 -05:00 [DBG] leftValue:  ZZZ
+2023-12-08 22:19:15.667 -05:00 [DBG] rawline: ZZZ = (ZZZ, ZZZ) header: ZZZ
+2023-12-08 22:19:15.671 -05:00 [INF] Answer: 0
+2023-12-08 22:19:40.850 -05:00 [INF] Starting!
+2023-12-08 22:19:40.930 -05:00 [DBG] leftValue:  BBB
+2023-12-08 22:19:40.938 -05:00 [DBG] rightValue:  CCC
+2023-12-08 22:19:40.944 -05:00 [DBG] rawline: AAA = (BBB, CCC) header: AAA
+2023-12-08 22:19:40.947 -05:00 [DBG] leftValue:  DDD
+2023-12-08 22:19:40.948 -05:00 [DBG] rightValue:  EEE
+2023-12-08 22:19:40.949 -05:00 [DBG] rawline: BBB = (DDD, EEE) header: BBB
+2023-12-08 22:19:40.951 -05:00 [DBG] leftValue:  ZZZ
+2023-12-08 22:19:40.953 -05:00 [DBG] rightValue:  GGG
+2023-12-08 22:19:40.954 -05:00 [DBG] rawline: CCC = (ZZZ, GGG) header: CCC
+2023-12-08 22:19:40.956 -05:00 [DBG] leftValue:  DDD
+2023-12-08 22:19:40.963 -05:00 [DBG] rightValue:  DDD
+2023-12-08 22:19:40.965 -05:00 [DBG] rawline: DDD = (DDD, DDD) header: DDD
+2023-12-08 22:19:40.967 -05:00 [DBG] leftValue:  EEE
+2023-12-08 22:19:40.969 -05:00 [DBG] rightValue:  EEE
+2023-12-08 22:19:40.971 -05:00 [DBG] rawline: EEE = (EEE, EEE) header: EEE
+2023-12-08 22:19:40.979 -05:00 [DBG] leftValue:  GGG
+2023-12-08 22:19:40.981 -05:00 [DBG] rightValue:  GGG
+2023-12-08 22:19:40.982 -05:00 [DBG] rawline: GGG = (GGG, GGG) header: GGG
+2023-12-08 22:19:40.985 -05:00 [DBG] leftValue:  ZZZ
+2023-12-08 22:19:40.986 -05:00 [DBG] rightValue:  ZZZ
+2023-12-08 22:19:40.988 -05:00 [DBG] rawline: ZZZ = (ZZZ, ZZZ) header: ZZZ
+2023-12-08 22:19:40.992 -05:00 [INF] Answer: 0
+2023-12-08 22:30:39.792 -05:00 [INF] Starting!
+2023-12-08 22:30:40.023 -05:00 [DBG] leftValue:  BBB
+2023-12-08 22:30:40.247 -05:00 [DBG] rightValue:  CCC
+2023-12-08 22:30:40.282 -05:00 [DBG] rawline: AAA = (BBB, CCC) header: AAA
+2023-12-08 22:30:40.326 -05:00 [DBG] leftValue:  DDD
+2023-12-08 22:30:40.455 -05:00 [DBG] rightValue:  EEE
+2023-12-08 22:30:40.473 -05:00 [DBG] rawline: BBB = (DDD, EEE) header: BBB
+2023-12-08 22:30:40.531 -05:00 [DBG] leftValue:  ZZZ
+2023-12-08 22:30:40.570 -05:00 [DBG] rightValue:  GGG
+2023-12-08 22:30:40.578 -05:00 [DBG] rawline: CCC = (ZZZ, GGG) header: CCC
+2023-12-08 22:30:40.584 -05:00 [DBG] leftValue:  DDD
+2023-12-08 22:30:40.594 -05:00 [DBG] rightValue:  DDD
+2023-12-08 22:30:40.602 -05:00 [DBG] rawline: DDD = (DDD, DDD) header: DDD
+2023-12-08 22:30:40.609 -05:00 [DBG] leftValue:  EEE
+2023-12-08 22:30:40.617 -05:00 [DBG] rightValue:  EEE
+2023-12-08 22:30:40.631 -05:00 [DBG] rawline: EEE = (EEE, EEE) header: EEE
+2023-12-08 22:30:40.651 -05:00 [DBG] leftValue:  GGG
+2023-12-08 22:30:40.658 -05:00 [DBG] rightValue:  GGG
+2023-12-08 22:30:40.667 -05:00 [DBG] rawline: GGG = (GGG, GGG) header: GGG
+2023-12-08 22:30:40.682 -05:00 [DBG] leftValue:  ZZZ
+2023-12-08 22:30:40.703 -05:00 [DBG] rightValue:  ZZZ
+2023-12-08 22:30:40.766 -05:00 [DBG] rawline: ZZZ = (ZZZ, ZZZ) header: ZZZ
+2023-12-08 22:30:40.839 -05:00 [INF] Answer: 0
